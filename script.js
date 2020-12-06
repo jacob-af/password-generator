@@ -26,6 +26,8 @@ function getCriteria() {
   return characters;
 }
 
+//user inputs desired length of password
+
 function getLength() {
   let chooseLength = prompt("How long would you like the password to be?\n(Choose a length between in 8 and 128)")
   while (chooseLength < 8 || chooseLength > 128) {
@@ -33,6 +35,8 @@ function getLength() {
   }
   return chooseLength;
 }
+
+//gets them to select the necessary character types
 
 function getCharacters() {
   let lowerCase = confirm('Do you want to use lower case letters?')
@@ -45,6 +49,8 @@ function getCharacters() {
   }
   return { lowerCase: lowerCase, upperCase: upperCase, numeric: numeric, special: special, passwordLength: 0 };
 }
+
+//Confirms the selections of user
 
 function confirmOptions(options) {
   let charDisplay = [];
@@ -71,16 +77,17 @@ function confirmOptions(options) {
     for (i = 1; i < charDisplay.length - 1; i++) {
       displayString += ", " + charDisplay[i]
     };
-    displayString += ', and ' + charDisplay[charDisplay.length - 1]
+    displayString += ' and ' + charDisplay[charDisplay.length - 1]
   }
-  displayString += '.'
-  let askAgain = confirm(`you want to generate a password with ${options.passwordLength} characters, comprised of ${displayString}`)
+  let askAgain = confirm(`You want to generate a password with ${options.passwordLength} characters, comprised of ${displayString}?`)
   if (askAgain) {
   return [charString, options.passwordLength]
   } else {
     return confirmOptions(getCriteria())
   }
 }
+
+//actually constructs the password from their chosen options
 
 function constructPassword(charStringAndLength) {
   charString = charStringAndLength[0]
