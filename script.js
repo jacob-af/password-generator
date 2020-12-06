@@ -28,8 +28,8 @@ function getCriteria() {
 
 function getLength() {
   let chooseLength = prompt("How long would you like the password to be?\n(Choose a length between in 8 and 128)")
-  if (chooseLength < 8 || chooseLength > 128) {
-    getLength();
+  while (chooseLength < 8 || chooseLength > 128) {
+    return getLength();
   }
   return chooseLength;
 }
