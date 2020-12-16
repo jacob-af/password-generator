@@ -10,7 +10,6 @@ function writePassword() {
 
 //Breaks the creation process into 3 chained functions: getCriteria, confirmOptions, and constructPassword
 
-
 function generatePassword() {
   let criteria = getCriteria();
   let charStringandLength = confirmOptions(criteria);
@@ -36,7 +35,7 @@ function getLength() {
   return chooseLength;
 }
 
-//gets them to select the necessary character types
+//user is prompted for character types, their response are recorded in array
 
 function getCharacters() {
   let lowerCase = confirm('Do you want to use lower case letters?')
@@ -50,8 +49,8 @@ function getCharacters() {
   return { lowerCase: lowerCase, upperCase: upperCase, numeric: numeric, special: special, passwordLength: 0 };
 }
 
-//Confirms the selections of user
-
+//Confirms the selections of user and constructs string of password option based on selection
+// returns password options along with chosen length as an array
 function confirmOptions(options) {
   let charDisplay = [];
   let charString = '';
@@ -87,7 +86,7 @@ function confirmOptions(options) {
   }
 }
 
-//actually constructs the password from their chosen options
+//actually constructs the password from their chosen options and the chosen length
 
 function constructPassword(charStringAndLength) {
   charString = charStringAndLength[0]
